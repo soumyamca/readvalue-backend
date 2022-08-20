@@ -23,6 +23,6 @@ app.post('/read',(req,res)=>{
     })
 
 })
-app.listen(7000,()=>{
-    console.log("server started at http://localhost:7000/read")
+app.listen(process.env.PORT||3000,()=>{
+    console.log("server started at http://localhost:3000/read")
 })
