@@ -1,5 +1,7 @@
 var express=require('express')
 var bodyParser=require('body-parser')
+var mongoose = require('mongoose');
+var {studentModel}=require('./models/studentModel')
 var app =express()
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -11,9 +13,12 @@ app.get('/',(req,res)=>{
 })
 
 app.post('/read',(req,res)=>{
+    var studentObject=new studentModel(req.body);
     var getName=req.body.name
     var getRoll=req.body.roll
-    res.json({"name":getName,"roll":getRoll})
+    var getAdmn=req.body.admno
+    var getCollege=req.body.college
+    res.json(studentObject)
 
     app.post('/add',(req,res)=>{
         var getNum1=parseFloat(req.body.num1 )
